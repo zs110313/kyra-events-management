@@ -1,13 +1,24 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { PortfolioFilter } from "@/components/portfolio/PortfolioFilter";
 import { Lightbox } from "@/components/portfolio/Lightbox";
 import { portfolioItems, type PortfolioCategory } from "@/data/portfolio";
 
+const portfolioCategories: PortfolioCategory[] = ["all", "weddings", "nikkahs", "mehndis"];
+
+function getCategoryFromSearchParams(searchParams: ReturnType<typeof useSearchParams>): PortfolioCategory {
+  const category = searchParams.get("category");
+  return portfolioCategories.includes(category as PortfolioCategory) ? (category as PortfolioCategory) : "all";
+}
+
 export function PortfolioGallery() {
-  const [active, setActive] = useState<PortfolioCategory>("all");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const active = getCategoryFromSearchParams(searchParams);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const filteredItems = useMemo(
@@ -15,9 +26,22 @@ export function PortfolioGallery() {
     [active]
   );
 
+  function handleFilterChange(category: PortfolioCategory) {
+    setLightboxIndex(null);
+
+    if (category === "all") {
+      router.replace(pathname, { scroll: false });
+      return;
+    }
+
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("category", category);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  }
+
   return (
     <div>
-      <PortfolioFilter active={active} onChange={setActive} />
+      <PortfolioFilter active={active} onChange={handleFilterChange} />
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {filteredItems.map((item, index) => (
           <button
