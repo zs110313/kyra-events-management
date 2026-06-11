@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { HeroCarousel } from "@/components/sections/HeroCarousel";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { site } from "@/data/site";
@@ -26,20 +26,7 @@ export function Hero() {
             </Button>
           </div>
         </div>
-        <div className="relative min-h-[440px] overflow-hidden rounded-sm border border-white/10 shadow-gold lg:min-h-[620px]">
-          <Image
-            src="/images/hero/hero-stage.webp"
-            alt="Luxury Asian wedding stage with floral decor and golden ambient lighting"
-            fill
-            priority
-            sizes="(min-width: 1024px) 56vw, 100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
-          <div className="absolute bottom-5 left-5 right-5 border-l border-gold-400/70 bg-ink/72 p-5 backdrop-blur">
-            <p className="text-sm uppercase tracking-[0.24em] text-gold-300">Weddings · Nikkahs · Mehndis</p>
-          </div>
-        </div>
+        <HeroCarousel />
       </Container>
     </section>
   );

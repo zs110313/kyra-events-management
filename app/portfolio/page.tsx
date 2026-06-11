@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { PortfolioGallery } from "@/components/portfolio/PortfolioGallery";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -19,7 +20,9 @@ export default function PortfolioPage() {
           align="center"
         />
         <div className="mt-12">
-          <PortfolioGallery />
+          <Suspense fallback={<div className="min-h-[420px]" />}>
+            <PortfolioGallery />
+          </Suspense>
         </div>
       </Container>
     </section>
