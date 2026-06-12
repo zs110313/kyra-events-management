@@ -24,6 +24,7 @@ export function Button({
   href,
   ...props
 }: ButtonProps) {
+  const rel = props.target === "_blank" ? props.rel ?? "noopener noreferrer" : props.rel;
   const classes = cn(
     "inline-flex min-h-12 items-center justify-center rounded-full border px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] transition duration-300 focus:outline-none focus:ring-2 focus:ring-gold-300 focus:ring-offset-2 focus:ring-offset-ink",
     variants[variant],
@@ -32,14 +33,14 @@ export function Button({
 
   if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")) {
     return (
-      <a className={classes} href={href} {...props}>
+      <a className={classes} href={href} {...props} rel={rel}>
         {children}
       </a>
     );
   }
 
   return (
-    <Link className={classes} href={href} {...props}>
+    <Link className={classes} href={href} {...props} rel={rel}>
       {children}
     </Link>
   );

@@ -18,7 +18,7 @@ export function ConsultationSection() {
             copy="Use the calendar to choose a convenient time, or visit Linktree for all current contact and social links."
           />
           <div className="mt-8 flex flex-col gap-4 sm:flex-row lg:flex-col">
-            <Button href={site.linktree} target="_blank" rel="noreferrer">
+            <Button href={site.linktree} target="_blank" rel="noopener noreferrer">
               Open Linktree
               <ExternalLink aria-hidden className="ml-3" size={17} />
             </Button>

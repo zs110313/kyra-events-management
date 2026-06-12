@@ -5,7 +5,7 @@ import { whatsappUrl } from "@/lib/utils";
 
 export function WhatsAppButton() {
   return (
-    <Button href={whatsappUrl(site.phone)} rel="noreferrer" target="_blank" variant="secondary">
+    <Button href={whatsappUrl(site.phone)} rel="noopener noreferrer" target="_blank" variant="secondary">
       WhatsApp
       <MessageCircle aria-hidden className="ml-3" size={17} />
     </Button>
