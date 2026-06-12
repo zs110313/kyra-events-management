@@ -19,7 +19,27 @@ Open `http://localhost:3000`.
 npm run typecheck
 npm run lint
 npm run build
+npm run test
+npm run test:e2e
 ```
+
+## Manual Lighthouse Review
+
+Lighthouse is best run manually for this project rather than as a blocking CI check. Scores can vary
+with machine load, browser version, network throttling and external widgets, so the automated suite
+focuses on stable compatibility checks instead.
+
+Recommended workflow:
+
+```bash
+npm run build
+npm run start
+```
+
+Open Chrome DevTools at `http://localhost:3000`, run Lighthouse against the production build, and
+check mobile and desktop reports for Performance, Accessibility, Best Practices and SEO. Review the
+Home, Portfolio and Contact pages first because they contain the key imagery, navigation and enquiry
+flows.
 
 ## Content
 
