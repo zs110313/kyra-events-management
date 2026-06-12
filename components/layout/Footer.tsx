@@ -42,7 +42,7 @@ export function Footer() {
               aria-label="Instagram"
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-mist transition hover:border-gold-400 hover:text-gold-300"
               href={site.instagram}
-              rel="noreferrer"
+              rel="noopener noreferrer"
               target="_blank"
             >
               <Instagram aria-hidden size={18} />
@@ -51,7 +51,7 @@ export function Footer() {
               aria-label="TikTok"
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-mist transition hover:border-gold-400 hover:text-gold-300"
               href={site.tiktok}
-              rel="noreferrer"
+              rel="noopener noreferrer"
               target="_blank"
             >
               <Send aria-hidden size={18} />
